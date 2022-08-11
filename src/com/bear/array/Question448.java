@@ -48,21 +48,28 @@ public class Question448 {
 		return res;
 	}
 
+	public static void main(String[] args) {
+		int[] tmp = {4,3,2,7,8,2,3,1};
+		findDisappearedNumbers3(tmp);
+	}
 	/**
 	 * 不使用额外的空间复杂度的话， 只能原地哈希
+	 *
 	 * @param nums
 	 * @return
 	 */
-	public List<Integer> findDisappearedNumbers3(int[] nums) {
+	public static List<Integer> findDisappearedNumbers3(int[] nums) {
+
+
 
 		int len = nums.length;
 		for (int num : nums) {
-			int index = (num-1)%len;
-			nums[index] +=len;
+			int index = Math.abs(num)-1;
+			nums[index] = -Math.abs(nums[index]);
 		}
 		ArrayList<Integer> res = new ArrayList<>();
 		for (int i = 0; i < nums.length; i++) {
-			if (nums[i] <= len) {
+			if (nums[i] > 0) {
 				res.add(i+1);
 			}
 		}

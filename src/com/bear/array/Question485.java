@@ -1,5 +1,8 @@
 package com.bear.array;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 最大连续1的个数， 数组中的数字不是1就是0
  */
@@ -47,7 +50,45 @@ public class Question485 {
         }
         return res;
     }
+    public void moveZeroes(int[] nums) {
+        int left = 0;
+        int right = 0;
+        while (right < nums.length) {
+            if (nums[right] != 0) {
+                swap(nums, left, right);
+                left++;
+            }
+            right++;
+        }
+    }
+    public void swap(int[] nums, int left, int right) {
+        int tmp = nums[left];
+        nums[left] = nums[right];
+        nums[right] = tmp;
+    }
+    public int firstMissingPositive(int[] nums) {
 
+        // 首先遍历数组， 将负数全部设置成len+1
+        int len = nums.length;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] <= 0) {
+                nums[i] = len+1;
+            }
+        }
+        // 然后遍历目标数组来标记是否存在
+        for (int i = 0; i < nums.length; i++) {
+            int tmp = Math.abs(nums[i])-1;
+            if (tmp < len) {
+                nums[tmp] = -nums[tmp];
+            }
+        }
+        for (int i = 0; i < len; i++) {
+            if (nums[i] > 0) {
+                return i+1;
+            }
+        }
+        return len+1;
+    }
     /**
      * 双指针, left指向第一个1的位置， right指向第一个0的位置
      *

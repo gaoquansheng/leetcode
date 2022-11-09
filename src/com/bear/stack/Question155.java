@@ -1,4 +1,4 @@
-package com.bear;
+package com.bear.stack;
 
 import java.util.ArrayDeque;
 // 最小栈

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Question636 {
 
-	public int[] exclusiveTime(int n, List<String> logs) {
-
-	}
+//	public int[] exclusiveTime(int n, List<String> logs) {
+//
+//	}
 }

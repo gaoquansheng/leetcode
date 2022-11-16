@@ -2,6 +2,7 @@ package com.bear.tree;
 
 import com.bear.base.TreeNode;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,16 @@ public class Inorder {
 	}
 
 	public List<Integer> inOrder2(TreeNode root) {
-		return null;
+		ArrayList<Integer> integers = new ArrayList<>();
+		ArrayDeque<TreeNode> stack = new ArrayDeque<>();
+		while (root != null || !stack.isEmpty()) {
+			while (root != null) {
+				stack.push(root);
+			}
+			root = stack.pop();
+			integers.add(root.val);
+			root = root.right;
+		}
+		return integers;
 	}
 }
